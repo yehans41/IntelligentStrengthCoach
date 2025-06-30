@@ -21,3 +21,9 @@ An advanced iOS fitness application built with SwiftUI that leverages the Gemini
 -   **Data Visualization:** SwiftUI Charts
 -   **Version Control:** Git & GitHub
 -   **Dependency Management:** Swift Package Manager
+
+## Screenshots
+| Onboarding | Workout List | Live Workout | Progress Chart |
+| :--------: | :----------: | :----------: | :------------: |
+| <img width="420" alt="Onboarding" src="https://github.com/user-attachments/assets/7c8c5c3a-98dc-4ba9-a573-a05496a3944a" />
+ |  |  |  |
