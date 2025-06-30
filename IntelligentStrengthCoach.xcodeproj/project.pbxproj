@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		546E29292E0924B100D93D8D /* IntelligentStrengthCoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29262E0924B100D93D8D /* IntelligentStrengthCoachApp.swift */; };
+		546E292A2E0924B100D93D8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29242E0924B100D93D8D /* ContentView.swift */; };
+		546E292B2E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 546E29252E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld */; };
+		546E292C2E0924B100D93D8D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29272E0924B100D93D8D /* Persistence.swift */; };
+		546E292D2E0924B100D93D8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546E29232E0924B100D93D8D /* Assets.xcassets */; };
+		546E29352E0A60A800D93D8D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29342E0A60A800D93D8D /* OnboardingView.swift */; };
+		546E29372E0B250000D93D8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546E29362E0B250000D93D8D /* GoogleService-Info.plist */; };
+		546E293A2E0B2C5F00D93D8D /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */; };
+		546E293C2E0B329C00D93D8D /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293B2E0B329C00D93D8D /* GeminiService.swift */; };
+		546E293E2E10AF3800D93D8D /* WorkoutPlanParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293D2E10AF3800D93D8D /* WorkoutPlanParser.swift */; };
+		546E29402E119AFB00D93D8D /* WorkoutPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */; };
+		546E29422E119BCA00D93D8D /* WorkoutDayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */; };
+		546E29442E119CB500D93D8D /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29432E119CB500D93D8D /* ExerciseListView.swift */; };
+		546E29462E119E7700D93D8D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29452E119E7700D93D8D /* ProfileView.swift */; };
+		546E294A2E12FECB00D93D8D /* LiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */; };
+		546E294E2E13079A00D93D8D /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E294D2E13079A00D93D8D /* Gradients.swift */; };
+		546E29502E132F3200D93D8D /* ProgressChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E294F2E132F3200D93D8D /* ProgressChartView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5482876E2E02A5D600068ADC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548287532E02A5D500068ADC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5482875A2E02A5D500068ADC;
+			remoteInfo = IntelligentStrengthCoach;
+		};
+		548287782E02A5D600068ADC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548287532E02A5D500068ADC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5482875A2E02A5D500068ADC;
+			remoteInfo = IntelligentStrengthCoach;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		546E29232E0924B100D93D8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		546E29242E0924B100D93D8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		546E29262E0924B100D93D8D /* IntelligentStrengthCoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentStrengthCoachApp.swift; sourceTree = "<group>"; };
+		546E29272E0924B100D93D8D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		546E29282E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IntelligentStrengthCoach.xcdatamodel; sourceTree = "<group>"; };
+		546E29342E0A60A800D93D8D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		546E29362E0B250000D93D8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		546E293B2E0B329C00D93D8D /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiService.swift; sourceTree = "<group>"; };
+		546E293D2E10AF3800D93D8D /* WorkoutPlanParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanParser.swift; sourceTree = "<group>"; };
+		546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanView.swift; sourceTree = "<group>"; };
+		546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayListView.swift; sourceTree = "<group>"; };
+		546E29432E119CB500D93D8D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		546E29452E119E7700D93D8D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutView.swift; sourceTree = "<group>"; };
+		546E294D2E13079A00D93D8D /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		546E294F2E132F3200D93D8D /* ProgressChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartView.swift; sourceTree = "<group>"; };
+		5482875B2E02A5D500068ADC /* IntelligentStrengthCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentStrengthCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5482876D2E02A5D600068ADC /* IntelligentStrengthCoachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntelligentStrengthCoachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		548287772E02A5D600068ADC /* IntelligentStrengthCoachUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntelligentStrengthCoachUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		548287582E02A5D500068ADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546E293A2E0B2C5F00D93D8D /* FirebaseVertexAI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5482876A2E02A5D600068ADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548287742E02A5D600068ADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		548287522E02A5D500068ADC = {
+			isa = PBXGroup;
+			children = (
+				5482878E2E02A65B00068ADC /* Utilities */,
+				5482878D2E02A65600068ADC /* Services */,
+				5482878C2E02A64800068ADC /* Models */,
+				5482878B2E02A64100068ADC /* ViewModels */,
+				5482878A2E02A62C00068ADC /* Views */,
+				5482875C2E02A5D500068ADC /* Products */,
+				546E29252E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld */,
+				546E29362E0B250000D93D8D /* GoogleService-Info.plist */,
+				546E29262E0924B100D93D8D /* IntelligentStrengthCoachApp.swift */,
+				546E29232E0924B100D93D8D /* Assets.xcassets */,
+			);
+			sourceTree = "<group>";
+		};
+		5482875C2E02A5D500068ADC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5482875B2E02A5D500068ADC /* IntelligentStrengthCoach.app */,
+				5482876D2E02A5D600068ADC /* IntelligentStrengthCoachTests.xctest */,
+				548287772E02A5D600068ADC /* IntelligentStrengthCoachUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5482878A2E02A62C00068ADC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				546E294F2E132F3200D93D8D /* ProgressChartView.swift */,
+				546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */,
+				546E29452E119E7700D93D8D /* ProfileView.swift */,
+				546E29432E119CB500D93D8D /* ExerciseListView.swift */,
+				546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */,
+				546E29242E0924B100D93D8D /* ContentView.swift */,
+				546E29342E0A60A800D93D8D /* OnboardingView.swift */,
+				546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5482878B2E02A64100068ADC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5482878C2E02A64800068ADC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5482878D2E02A65600068ADC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				546E293D2E10AF3800D93D8D /* WorkoutPlanParser.swift */,
+				546E29272E0924B100D93D8D /* Persistence.swift */,
+				546E293B2E0B329C00D93D8D /* GeminiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5482878E2E02A65B00068ADC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				546E294D2E13079A00D93D8D /* Gradients.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5482875A2E02A5D500068ADC /* IntelligentStrengthCoach */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548287812E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoach" */;
+			buildPhases = (
+				548287572E02A5D500068ADC /* Sources */,
+				548287582E02A5D500068ADC /* Frameworks */,
+				548287592E02A5D500068ADC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntelligentStrengthCoach;
+			packageProductDependencies = (
+				546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */,
+			);
+			productName = IntelligentStrengthCoach;
+			productReference = 5482875B2E02A5D500068ADC /* IntelligentStrengthCoach.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5482876C2E02A5D600068ADC /* IntelligentStrengthCoachTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548287842E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoachTests" */;
+			buildPhases = (
+				548287692E02A5D600068ADC /* Sources */,
+				5482876A2E02A5D600068ADC /* Frameworks */,
+				5482876B2E02A5D600068ADC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5482876F2E02A5D600068ADC /* PBXTargetDependency */,
+			);
+			name = IntelligentStrengthCoachTests;
+			packageProductDependencies = (
+			);
+			productName = IntelligentStrengthCoachTests;
+			productReference = 5482876D2E02A5D600068ADC /* IntelligentStrengthCoachTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		548287762E02A5D600068ADC /* IntelligentStrengthCoachUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548287872E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoachUITests" */;
+			buildPhases = (
+				548287732E02A5D600068ADC /* Sources */,
+				548287742E02A5D600068ADC /* Frameworks */,
+				548287752E02A5D600068ADC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548287792E02A5D600068ADC /* PBXTargetDependency */,
+			);
+			name = IntelligentStrengthCoachUITests;
+			packageProductDependencies = (
+			);
+			productName = IntelligentStrengthCoachUITests;
+			productReference = 548287772E02A5D600068ADC /* IntelligentStrengthCoachUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		548287532E02A5D500068ADC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					5482875A2E02A5D500068ADC = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					5482876C2E02A5D600068ADC = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 5482875A2E02A5D500068ADC;
+					};
+					548287762E02A5D600068ADC = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 5482875A2E02A5D500068ADC;
+					};
+				};
+			};
+			buildConfigurationList = 548287562E02A5D500068ADC /* Build configuration list for PBXProject "IntelligentStrengthCoach" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 548287522E02A5D500068ADC;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				546E29382E0B2C5F00D93D8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5482875C2E02A5D500068ADC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5482875A2E02A5D500068ADC /* IntelligentStrengthCoach */,
+				5482876C2E02A5D600068ADC /* IntelligentStrengthCoachTests */,
+				548287762E02A5D600068ADC /* IntelligentStrengthCoachUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		548287592E02A5D500068ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546E292D2E0924B100D93D8D /* Assets.xcassets in Resources */,
+				546E29372E0B250000D93D8D /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5482876B2E02A5D600068ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548287752E02A5D600068ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		548287572E02A5D500068ADC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				546E294E2E13079A00D93D8D /* Gradients.swift in Sources */,
+				546E29292E0924B100D93D8D /* IntelligentStrengthCoachApp.swift in Sources */,
+				546E292A2E0924B100D93D8D /* ContentView.swift in Sources */,
+				546E29402E119AFB00D93D8D /* WorkoutPlanView.swift in Sources */,
+				546E29422E119BCA00D93D8D /* WorkoutDayListView.swift in Sources */,
+				546E292B2E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld in Sources */,
+				546E29502E132F3200D93D8D /* ProgressChartView.swift in Sources */,
+				546E29352E0A60A800D93D8D /* OnboardingView.swift in Sources */,
+				546E293C2E0B329C00D93D8D /* GeminiService.swift in Sources */,
+				546E293E2E10AF3800D93D8D /* WorkoutPlanParser.swift in Sources */,
+				546E29442E119CB500D93D8D /* ExerciseListView.swift in Sources */,
+				546E29462E119E7700D93D8D /* ProfileView.swift in Sources */,
+				546E294A2E12FECB00D93D8D /* LiveWorkoutView.swift in Sources */,
+				546E292C2E0924B100D93D8D /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548287692E02A5D600068ADC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548287732E02A5D600068ADC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5482876F2E02A5D600068ADC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5482875A2E02A5D500068ADC /* IntelligentStrengthCoach */;
+			targetProxy = 5482876E2E02A5D600068ADC /* PBXContainerItemProxy */;
+		};
+		548287792E02A5D600068ADC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5482875A2E02A5D500068ADC /* IntelligentStrengthCoach */;
+			targetProxy = 548287782E02A5D600068ADC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5482877F2E02A5D600068ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		548287802E02A5D600068ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		548287822E02A5D600068ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-Objc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoach;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		548287832E02A5D600068ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-Objc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoach;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		548287852E02A5D600068ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoachTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntelligentStrengthCoach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IntelligentStrengthCoach";
+			};
+			name = Debug;
+		};
+		548287862E02A5D600068ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoachTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IntelligentStrengthCoach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IntelligentStrengthCoach";
+			};
+			name = Release;
+		};
+		548287882E02A5D600068ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoachUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IntelligentStrengthCoach;
+			};
+			name = Debug;
+		};
+		548287892E02A5D600068ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H7U3X88TW8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehansubasinghe.IntelligentStrengthCoachUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IntelligentStrengthCoach;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		548287562E02A5D500068ADC /* Build configuration list for PBXProject "IntelligentStrengthCoach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5482877F2E02A5D600068ADC /* Debug */,
+				548287802E02A5D600068ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548287812E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548287822E02A5D600068ADC /* Debug */,
+				548287832E02A5D600068ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548287842E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoachTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548287852E02A5D600068ADC /* Debug */,
+				548287862E02A5D600068ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548287872E02A5D600068ADC /* Build configuration list for PBXNativeTarget "IntelligentStrengthCoachUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548287882E02A5D600068ADC /* Debug */,
+				548287892E02A5D600068ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		546E29382E0B2C5F00D93D8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 546E29382E0B2C5F00D93D8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseVertexAI;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		546E29252E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				546E29282E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodel */,
+			);
+			currentVersion = 546E29282E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodel */;
+			path = IntelligentStrengthCoach.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 548287532E02A5D500068ADC /* Project object */;
+}

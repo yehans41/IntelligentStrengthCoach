@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCGRosBMuf1OTzTYJcNe0S2hMYF68ln7Ls</string>
+	<key>GCM_SENDER_ID</key>
+	<string>714289552453</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.yehansubasinghe.IntelligentStrengthCoach</string>
+	<key>PROJECT_ID</key>
+	<string>intelligentstrengthcoach</string>
+	<key>STORAGE_BUCKET</key>
+	<string>intelligentstrengthcoach.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:714289552453:ios:2f2c98b289f5a33533d72c</string>
+</dict>
+</plist>
