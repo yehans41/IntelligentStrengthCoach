@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-// Enums remain the same...
+// Data models for the picker options.
 enum ExperienceLevel: String, CaseIterable, Identifiable {
     case beginner = "Beginner"
     case intermediate = "Intermediate"
@@ -22,8 +22,7 @@ enum FitnessGoal: String, CaseIterable, Identifiable {
     case fatLoss = "Lose Fat"
     var id: Self { self }
 }
-
-
+// A view presented modally for new user profile creation and initial workout plan generation.
 struct OnboardingView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
@@ -63,7 +62,6 @@ struct OnboardingView: View {
                 }
                 .navigationTitle("Create Profile")
                 .toolbar {
-                    // ADD THIS: A new ToolbarItem for the Cancel button.
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Cancel") {
                             dismiss() // The action simply dismisses the view.
@@ -83,7 +81,7 @@ struct OnboardingView: View {
                     }
                 }
             }
-            
+            // A semi-transparent overlay with a spinner that appears while the AI is working.
             if isGeneratingPlan {
                 Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
@@ -102,7 +100,7 @@ struct OnboardingView: View {
         }
         .tint(Color("AccentColor"))
     }
-
+    // Handles the entire end-to-end process of saving the user and generating their first workout plan.
     private func saveUserAndGeneratePlan() async {
         // This function's logic remains the same
         let newUser = User(context: viewContext)

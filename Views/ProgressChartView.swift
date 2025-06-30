@@ -8,21 +8,19 @@
 import SwiftUI
 import CoreData
 import Charts
-
+// A view that displays a user's strength progress for a selected exercise over time.
 struct ProgressChartView: View {
-    // 1. Fetch all unique exercises that have been logged
     @FetchRequest(
         entity: Exercise.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Exercise.name, ascending: true)]
     ) private var exercises: FetchedResults<Exercise>
-
-    // 2. State to hold the selected exercise
+    // State to keep track of the exercise currently selected by the user.
     @State private var selectedExercise: Exercise?
 
     var body: some View {
         NavigationStack {
             VStack {
-                // 3. Picker to choose which exercise to view
+                // A dropdown menu for the user to select which exercise's progress to view.
                 if !exercises.isEmpty {
                     Picker("Select Exercise", selection: $selectedExercise) {
                         Text("Select an Exercise").tag(nil as Exercise?)
@@ -33,11 +31,8 @@ struct ProgressChartView: View {
                     .pickerStyle(.menu)
                     .padding()
                 }
-
-                // 4. The Chart view
+                // Only show the chart if an exercise is selected and it has logs.
                 if let selectedExercise = selectedExercise,
-                   // --- CORRECTION 1 ---
-                   // We now sort the logs by the date of their parent workout session.
                    let setLogs = (selectedExercise.setLogs as? Set<SetLog>)?.sorted(by: {
                        $0.workoutSession?.date ?? Date() < $1.workoutSession?.date ?? Date()
                    }), !setLogs.isEmpty {
@@ -45,18 +40,14 @@ struct ProgressChartView: View {
                     Text("Max Weight Lifted for \(selectedExercise.name ?? "")")
                         .font(.headline)
                         .padding(.bottom)
-
+                    // The main chart view that plots weight over time for the selected exercise.
                     Chart(setLogs) { log in
-                        // --- CORRECTION 2 ---
-                        // Plot the x-axis using the date from the session.
                         LineMark(
                             x: .value("Date", log.workoutSession?.date ?? Date()),
                             y: .value("Weight", log.weight)
                         )
                         .foregroundStyle(Color("AccentColor"))
-                        
-                        // --- CORRECTION 3 ---
-                        // Also use the session's date for the point mark.
+                
                         PointMark(
                             x: .value("Date", log.workoutSession?.date ?? Date()),
                             y: .value("Weight", log.weight)
@@ -71,6 +62,7 @@ struct ProgressChartView: View {
                     .padding()
                     
                 } else {
+                    // A placeholder view shown when no exercise is selected or there's no data.
                     Spacer()
                     Text("Select an exercise with logged sets to see your progress.")
                         .multilineTextAlignment(.center)
@@ -80,7 +72,7 @@ struct ProgressChartView: View {
             }
             .navigationTitle("Progress")
             .onAppear {
-                // Automatically select the first exercise when the view appears
+                // Automatically selects the first exercise in the list when the view initially appears.
                 if selectedExercise == nil {
                     selectedExercise = exercises.first
                 }

@@ -12,7 +12,6 @@ import FirebaseCore
 struct IntelligentStrengthCoachApp: App {
     let persistenceController = PersistenceController.shared
 
-    //Add an init method to configure Firebase
     init() {
         FirebaseApp.configure()
     }

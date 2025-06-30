@@ -8,28 +8,23 @@
 import Foundation
 import FirebaseVertexAI
 
-// MARK: - Gemini Service
-// This class will handle all communication with the Gemini API.
-
+// A service class responsible for all communication with the Gemini AI model.
 final class GeminiService {
-
+    
+    // Configures the connection to the specific Gemini model we want to use.
     private let model = VertexAI.vertexAI(location: "us-central1").generativeModel(
         modelName: "gemini-2.5-flash"
     )
 
-    // This is the main function we will call from our app.
-    // It takes a 'User' object and will eventually return a full workout plan.
-    // For now, it will just return the raw text response from the AI.
+    // Generates an initial workout plan based on the user's profile.
     func generateWorkoutPlan(for user: User) async throws -> String {
         
-        // 1. We verify that we have the user's goal and experience level.
-        // If not, we throw an error.
+        
         guard let goal = user.primaryGoal, let experience = user.experienceLevel else {
             throw NSError(domain: "GeminiServiceError", code: 1, userInfo: [NSLocalizedDescriptionKey: "User goal or experience is missing."])
         }
 
-        // 2. We construct a detailed prompt to send to the AI.
-        // This is "prompt engineering" - the key to getting good results.
+        // Construct a detailed prompt to send to the AI for an initial plan.
         let prompt = """
         You are an expert strength and conditioning coach.
         A new client has come to you with the following details:
@@ -45,10 +40,8 @@ final class GeminiService {
         print(prompt)
         print("-----------------------------")
 
-        // 3. We send the prompt to the model and wait for a response.
         let response = try await model.generateContent(prompt)
         
-        // 4. We safely unwrap the response text and return it.
         guard let text = response.text else {
             throw NSError(domain: "GeminiServiceError", code: 2, userInfo: [NSLocalizedDescriptionKey: "No text response from Gemini."])
         }
@@ -59,15 +52,13 @@ final class GeminiService {
         
         return text
     }
-    // ADD THIS ENTIRE NEW FUNCTION
+    // Generates an adjusted workout plan based on a user's performance in a previous workout session.
         func generateAdjustedPlan(basedOn lastSession: WorkoutSession, for user: User) async throws -> String {
             
-            // 1. Safely unwrap the user's core profile data.
             guard let goal = user.primaryGoal, let experience = user.experienceLevel else {
                 throw NSError(domain: "GeminiServiceError", code: 1, userInfo: [NSLocalizedDescriptionKey: "User goal or experience is missing."])
             }
-            
-            // 2. Build a summary of the user's performance from the last workout session.
+            // Build a string summarizing the user's performance from the completed session.
             var performanceSummary = ""
             if let setLogs = lastSession.setLogs as? Set<SetLog> {
                 // Group logs by exercise name
@@ -82,7 +73,7 @@ final class GeminiService {
                 }
             }
             
-            // 3. Construct our new, more advanced prompt.
+            // Construct a new, more advanced prompt including the user's recent performance.
             let prompt = """
             You are an expert strength and conditioning coach designing a program based on progressive overload.
 
@@ -104,7 +95,6 @@ final class GeminiService {
             print(prompt)
             print("---------------------------------------")
 
-            // 4. Send the prompt and return the response.
             let response = try await model.generateContent(prompt)
             
             guard let text = response.text else {

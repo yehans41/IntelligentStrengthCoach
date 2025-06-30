@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
+// The main view of the app, which sets up the primary `TabView` navigation.
 struct ContentView: View {
     var body: some View {
         // TabView is the container for the main tab bar interface.
         TabView {
-            // First Tab: The workout plans list.
             WorkoutPlanView()
                 .tabItem {
                     Label("Workouts", systemImage: "figure.strengthtraining.traditional")
@@ -21,13 +20,12 @@ struct ContentView: View {
                             .tabItem {
                                 Label("Progress", systemImage: "chart.bar.xaxis")
                             }
-
-            // Second Tab: The new profile view.
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
         }
+        // Sets the global accent color for the entire application from the asset catalog.
         .tint(Color("AccentColor"))
     }
 }

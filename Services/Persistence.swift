@@ -13,7 +13,6 @@ struct PersistenceController {
     @MainActor
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
-        // The sample data creation loop has been removed from here.
         return result
     }()
 
@@ -22,12 +21,13 @@ struct PersistenceController {
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "IntelligentStrengthCoach")
         if inMemory {
+            // If running for previews, point the store to a null device to discard data.
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // This is a development-only error handler.
-                // In a real app, you'd implement proper error handling.
+                // This is a development-only error handler that will crash the app.
+                // A production app should handle this error gracefully.
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })

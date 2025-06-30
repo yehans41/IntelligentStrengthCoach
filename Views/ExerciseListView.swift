@@ -7,32 +7,32 @@
 
 import SwiftUI
 
+// A view that displays a list of exercises for a specific workout day.
 struct ExerciseListView: View {
+    // The WorkoutDay object containing the exercises to be displayed.
     let day: WorkoutDay
 
-    // NEW: The complex logic is moved into its own computed property.
+    // Safely unwraps and sorts the exercises from the day's template.
     private var sortedExercises: [WorkoutExerciseTemplate] {
         let exercises = (day.exercises?.allObjects as? [WorkoutExerciseTemplate] ?? [])
         return exercises.sorted { $0.orderInDay < $1.orderInDay }
     }
 
     var body: some View {
-        // The body is now much simpler for the compiler to understand.
-        List {
-            ForEach(sortedExercises) { exercise in
-                // TEMPORARILY change the destination to a simple Text view
-                NavigationLink(destination: Text("Details for \(exercise.notes ?? "")")) {
-                    VStack(alignment: .leading) {
-                        Text(exercise.notes ?? "Unnamed Exercise")
-                            .font(.headline)
-                        
-                        Text(exercise.plannedReps ?? "No sets/reps defined")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+            List {
+                ForEach(sortedExercises) { exercise in
+                    NavigationLink(destination: Text("Details for \(exercise.notes ?? "")")) {
+                        VStack(alignment: .leading) {
+                            Text(exercise.notes ?? "Unnamed Exercise")
+                                .font(.headline)
+                            
+                            Text(exercise.plannedReps ?? "No sets/reps defined")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
             }
+            .navigationTitle(day.dayName ?? "Exercises")
         }
-        .navigationTitle(day.dayName ?? "Exercises")
-    }
 }

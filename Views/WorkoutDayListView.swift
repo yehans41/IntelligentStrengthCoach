@@ -7,12 +7,12 @@
 
 import SwiftUI
 import CoreData
-
+// A view that displays a list of the workout days within a specific workout plan.
 struct WorkoutDayListView: View {
-    // This view receives the specific WorkoutPlan to display.
+    // The parent WorkoutPlan object, passed in from the previous view.
     let plan: WorkoutPlan
 
-    // A computed property to safely get and sort the days.
+    // Safely unwraps and sorts the days from the plan by their specified order.
     private var sortedDays: [WorkoutDay] {
         let days = (plan.workoutDays?.allObjects as? [WorkoutDay] ?? [])
         return days.sorted { $0.order < $1.order }
@@ -21,7 +21,7 @@ struct WorkoutDayListView: View {
     var body: some View {
         List {
             ForEach(sortedDays) { day in
-                // This NavigationLink is what enables the next layer of navigation.
+                // Each row is a tappable link that navigates to the live workout view for that day.
                 NavigationLink(destination: LiveWorkoutView(dayTemplate: day)) {
                     Text(day.dayName ?? "Unnamed Day")
                 }
@@ -33,6 +33,7 @@ struct WorkoutDayListView: View {
 
 // A functional preview provider for this view.
 #Preview {
+    // Creates sample data in memory for the preview to function correctly.
     let context = PersistenceController.preview.container.viewContext
     
     // Create a sample plan for the preview
@@ -45,7 +46,7 @@ struct WorkoutDayListView: View {
     sampleDay.order = 1
     sampleDay.workoutPlan = samplePlan
     
-    // Wrap the preview in a NavigationStack so the title is visible.
+    // Injects the preview context and wraps the view in a NavigationStack.
     return NavigationStack {
         WorkoutDayListView(plan: samplePlan)
             .environment(\.managedObjectContext, context)

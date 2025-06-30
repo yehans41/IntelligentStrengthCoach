@@ -7,14 +7,14 @@
 
 import SwiftUI
 import CoreData
-
+// The main view for tracking a live workout session for a specific workout day.
 struct LiveWorkoutView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
 
     let dayTemplate: WorkoutDay
     @State private var session: WorkoutSession
-    
+    // Creates a new, active WorkoutSession object as soon as the user starts the workout.
     init(dayTemplate: WorkoutDay) {
         self.dayTemplate = dayTemplate
         
@@ -26,7 +26,7 @@ struct LiveWorkoutView: View {
         
         self._session = State(initialValue: newSession)
     }
-
+    // Safely unwraps and sorts the exercises from the day's template to be displayed.
     private var sortedExerciseTemplates: [WorkoutExerciseTemplate] {
         let templates = (dayTemplate.exercises?.allObjects as? [WorkoutExerciseTemplate] ?? [])
         return templates.sorted { $0.orderInDay < $1.orderInDay }
@@ -46,8 +46,7 @@ struct LiveWorkoutView: View {
             }
         }
     }
-    
-    // This function is now much simpler. It only saves the session.
+    // Marks the session as complete, calculates its duration, saves, and dismisses the view.
     private func finishWorkout() {
         session.isCompleted = true
         session.durationMinutes = Int16(Date().timeIntervalSince(session.date ?? Date()) / 60)
@@ -61,8 +60,7 @@ struct LiveWorkoutView: View {
         }
     }
 }
-
-// This view is inside LiveWorkoutView.swift
+// A view representing a single exercise within a live workout, handling set logging and timers.
 struct ExerciseLoggingView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FocusState private var isTextFieldFocused: Bool
@@ -72,14 +70,12 @@ struct ExerciseLoggingView: View {
     
     @State private var weight: String = ""
     @State private var reps: String = ""
-    
-    // MARK: - Timer State
     @State private var timer: Timer?
     @State private var timeRemaining: Int = 90 // Default 90-second rest
     @State private var isTimerActive = false
     
     @FetchRequest var loggedSets: FetchedResults<SetLog>
-    
+    // Custom initializer to configure the FetchRequest's predicate dynamically.
     init(exerciseTemplate: WorkoutExerciseTemplate, session: WorkoutSession) {
         self.exerciseTemplate = exerciseTemplate
         self.session = session
@@ -99,7 +95,7 @@ struct ExerciseLoggingView: View {
                 Text(exerciseTemplate.plannedReps ?? "")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                
+                // Display any sets that have already been logged for this exercise.
                 ForEach(loggedSets) { set in
                     HStack {
                         Text("Set \(set.orderInExercise):")
@@ -137,7 +133,7 @@ struct ExerciseLoggingView: View {
             }
         }
     }
-    
+    // Validates input, creates a new SetLog object, and links it to the session and exercise.
     private func addSet() {
         guard let weightValue = Double(weight), let repsValue = Int16(reps) else { return }
         let exercise = findOrCreateExercise(named: exerciseTemplate.notes ?? "Unknown", in: viewContext)
@@ -160,8 +156,7 @@ struct ExerciseLoggingView: View {
             print("Failed to save set: \(error.localizedDescription)")
         }
     }
-    
-    // MARK: - Timer Functions
+    // Manages the start and stop logic for the rest timer.
     private func startTimer() {
         isTimerActive = true
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
@@ -181,9 +176,8 @@ struct ExerciseLoggingView: View {
         timeRemaining = 90 // Reset for the next rest period
         isTimerActive = false
     }
-    
+    // A helper to prevent duplicate Exercise objects.
     private func findOrCreateExercise(named name: String, in context: NSManagedObjectContext) -> Exercise {
-        // ... (this function remains the same)
         let request = Exercise.fetchRequest()
         request.predicate = NSPredicate(format: "name == %@", name)
         

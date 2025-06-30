@@ -7,18 +7,15 @@
 
 import SwiftUI
 import CoreData
-
+// The main view for the "Workouts" tab, displaying all workout plans.
+// This view handles fetching, sorting, renaming, deleting, and generating new plans.
 struct WorkoutPlanView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    // MARK: - Enums
-    // We create an enum to represent our sorting options.
     enum SortOption {
         case dateDescending, nameAscending
     }
-
-    // MARK: - Fetch Requests
-    // The Fetch Request no longer needs to sort, as we'll do it in code.
+    // MARK: - Data Fetching
     @FetchRequest(sortDescriptors: [], animation: .default)
     private var workoutPlans: FetchedResults<WorkoutPlan>
 
@@ -29,21 +26,18 @@ struct WorkoutPlanView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \WorkoutSession.date, ascending: false)],
         predicate: NSPredicate(format: "isCompleted == YES"))
     private var completedSessions: FetchedResults<WorkoutSession>
-
-    // MARK: - State
+    // MARK: - View State
     @State private var planToRename: WorkoutPlan?
     @State private var newPlanName: String = ""
     @State private var isShowingRenameAlert = false
+    // State for the loading indicator during AI plan generation.
     @State private var isGenerating = false
-    // New state to hold the current sort order.
+    // State to hold the current sort order for the list.
     @State private var currentSort: SortOption = .dateDescending
 
-    // MARK: - Services
     private let geminiService = GeminiService()
     private let planParser = WorkoutPlanParser()
-    
     // MARK: - Computed Properties
-    // This property sorts the fetched plans based on the currentSort state.
     private var sortedPlans: [WorkoutPlan] {
         switch currentSort {
         case .dateDescending:
@@ -52,12 +46,12 @@ struct WorkoutPlanView: View {
             return workoutPlans.sorted { $0.name ?? "" < $1.name ?? "" }
         }
     }
-
+    // MARK: - Body
     var body: some View {
         ZStack {
             NavigationStack {
                 List {
-                    // The ForEach now loops over our sortedPlans computed property.
+                    // The ForEach now loops over the dynamically sorted `sortedPlans` array.
                     ForEach(sortedPlans) { plan in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: WorkoutDayListView(plan: plan)) { EmptyView() }
@@ -90,7 +84,6 @@ struct WorkoutPlanView: View {
                         }
                         .disabled(isGenerating || completedSessions.isEmpty)
                     }
-                    // The EditButton has been replaced with a Sort Menu.
                     ToolbarItem(placement: .navigationBarLeading) {
                         Menu {
                             Button("Sort by Date (Newest First)") { currentSort = .dateDescending }
@@ -106,7 +99,7 @@ struct WorkoutPlanView: View {
                 Button("Save", action: renamePlan)
                 Button("Cancel", role: .cancel) { }
             } message: { Text("Enter a new name for this workout plan.") }
-            
+            // Loading indicator overlay for AI generation.
             if isGenerating {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                 VStack(spacing: 20) {
@@ -118,7 +111,7 @@ struct WorkoutPlanView: View {
         }
         .tint(Color("AccentColor"))
     }
-
+    
     // MARK: - Functions
     private func renamePlan() {
         guard let plan = planToRename else { return }
@@ -141,8 +134,7 @@ struct WorkoutPlanView: View {
             print("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-    
-    // In WorkoutPlanView.swift
+
     private func generateNewPlan() async {
         guard let user = users.first, let lastSession = completedSessions.first else {
             print("Cannot generate plan: No user or no completed sessions found.")
@@ -154,7 +146,7 @@ struct WorkoutPlanView: View {
         do {
             let adjustedPlanText = try await geminiService.generateAdjustedPlan(basedOn: lastSession, for: user)
             
-            // We now define the correct name here before calling the parser
+            // We define the name here before calling the parser
             let planName = "AI Adjusted Plan (\(Date().formatted(date: .numeric, time: .omitted)))"
             _ = try planParser.parse(planString: adjustedPlanText, planName: planName, in: viewContext)
             
@@ -167,7 +159,7 @@ struct WorkoutPlanView: View {
         isGenerating = false
     }
 }
-
+// MARK: - Helpers
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
