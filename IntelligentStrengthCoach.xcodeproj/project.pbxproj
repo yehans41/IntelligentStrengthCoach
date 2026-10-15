@@ -14,15 +14,13 @@
 		546E292D2E0924B100D93D8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546E29232E0924B100D93D8D /* Assets.xcassets */; };
 		546E29352E0A60A800D93D8D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29342E0A60A800D93D8D /* OnboardingView.swift */; };
 		546E29372E0B250000D93D8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546E29362E0B250000D93D8D /* GoogleService-Info.plist */; };
-		546E293A2E0B2C5F00D93D8D /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */; };
+		546E293A2E0B2C5F00D93D8D /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 546E29392E0B2C5F00D93D8D /* FirebaseAI */; };
 		546E293C2E0B329C00D93D8D /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293B2E0B329C00D93D8D /* GeminiService.swift */; };
 		546E293E2E10AF3800D93D8D /* WorkoutPlanParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293D2E10AF3800D93D8D /* WorkoutPlanParser.swift */; };
 		546E29402E119AFB00D93D8D /* WorkoutPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */; };
 		546E29422E119BCA00D93D8D /* WorkoutDayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */; };
-		546E29442E119CB500D93D8D /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29432E119CB500D93D8D /* ExerciseListView.swift */; };
 		546E29462E119E7700D93D8D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29452E119E7700D93D8D /* ProfileView.swift */; };
 		546E294A2E12FECB00D93D8D /* LiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */; };
-		546E294E2E13079A00D93D8D /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E294D2E13079A00D93D8D /* Gradients.swift */; };
 		546E29502E132F3200D93D8D /* ProgressChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E294F2E132F3200D93D8D /* ProgressChartView.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,10 +53,8 @@
 		546E293D2E10AF3800D93D8D /* WorkoutPlanParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanParser.swift; sourceTree = "<group>"; };
 		546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlanView.swift; sourceTree = "<group>"; };
 		546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayListView.swift; sourceTree = "<group>"; };
-		546E29432E119CB500D93D8D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		546E29452E119E7700D93D8D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutView.swift; sourceTree = "<group>"; };
-		546E294D2E13079A00D93D8D /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		546E294F2E132F3200D93D8D /* ProgressChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressChartView.swift; sourceTree = "<group>"; };
 		5482875B2E02A5D500068ADC /* IntelligentStrengthCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentStrengthCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5482876D2E02A5D600068ADC /* IntelligentStrengthCoachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntelligentStrengthCoachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				546E293A2E0B2C5F00D93D8D /* FirebaseVertexAI in Frameworks */,
+				546E293A2E0B2C5F00D93D8D /* FirebaseAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +90,7 @@
 		548287522E02A5D500068ADC = {
 			isa = PBXGroup;
 			children = (
-				5482878E2E02A65B00068ADC /* Utilities */,
 				5482878D2E02A65600068ADC /* Services */,
-				5482878C2E02A64800068ADC /* Models */,
-				5482878B2E02A64100068ADC /* ViewModels */,
 				5482878A2E02A62C00068ADC /* Views */,
 				5482875C2E02A5D500068ADC /* Products */,
 				546E29252E0924B100D93D8D /* IntelligentStrengthCoach.xcdatamodeld */,
@@ -123,27 +116,12 @@
 				546E294F2E132F3200D93D8D /* ProgressChartView.swift */,
 				546E29492E12FECB00D93D8D /* LiveWorkoutView.swift */,
 				546E29452E119E7700D93D8D /* ProfileView.swift */,
-				546E29432E119CB500D93D8D /* ExerciseListView.swift */,
 				546E29412E119BCA00D93D8D /* WorkoutDayListView.swift */,
 				546E29242E0924B100D93D8D /* ContentView.swift */,
 				546E29342E0A60A800D93D8D /* OnboardingView.swift */,
 				546E293F2E119AFB00D93D8D /* WorkoutPlanView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		5482878B2E02A64100068ADC /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		5482878C2E02A64800068ADC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		5482878D2E02A65600068ADC /* Services */ = {
@@ -154,14 +132,6 @@
 				546E293B2E0B329C00D93D8D /* GeminiService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		5482878E2E02A65B00068ADC /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				546E294D2E13079A00D93D8D /* Gradients.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +151,7 @@
 			);
 			name = IntelligentStrengthCoach;
 			packageProductDependencies = (
-				546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */,
+				546E29392E0B2C5F00D93D8D /* FirebaseAI */,
 			);
 			productName = IntelligentStrengthCoach;
 			productReference = 5482875B2E02A5D500068ADC /* IntelligentStrengthCoach.app */;
@@ -235,7 +205,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					5482875A2E02A5D500068ADC = {
 						CreatedOnToolsVersion = 16.4;
@@ -305,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				546E294E2E13079A00D93D8D /* Gradients.swift in Sources */,
 				546E29292E0924B100D93D8D /* IntelligentStrengthCoachApp.swift in Sources */,
 				546E292A2E0924B100D93D8D /* ContentView.swift in Sources */,
 				546E29402E119AFB00D93D8D /* WorkoutPlanView.swift in Sources */,
@@ -315,7 +284,6 @@
 				546E29352E0A60A800D93D8D /* OnboardingView.swift in Sources */,
 				546E293C2E0B329C00D93D8D /* GeminiService.swift in Sources */,
 				546E293E2E10AF3800D93D8D /* WorkoutPlanParser.swift in Sources */,
-				546E29442E119CB500D93D8D /* ExerciseListView.swift in Sources */,
 				546E29462E119E7700D93D8D /* ProfileView.swift in Sources */,
 				546E294A2E12FECB00D93D8D /* LiveWorkoutView.swift in Sources */,
 				546E292C2E0924B100D93D8D /* Persistence.swift in Sources */,
@@ -411,6 +379,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -468,6 +437,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -656,10 +626,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		546E29392E0B2C5F00D93D8D /* FirebaseVertexAI */ = {
+		546E29392E0B2C5F00D93D8D /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 546E29382E0B2C5F00D93D8D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseVertexAI;
+			productName = FirebaseAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 
