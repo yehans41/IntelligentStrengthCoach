@@ -31,36 +31,43 @@ struct ProgressChartView: View {
                     .pickerStyle(.menu)
                     .padding()
                 }
-                // Only show the chart if an exercise is selected and it has logs.
+                // Only show the chart if an exercise is selected and it has completed sets.
                 if let selectedExercise = selectedExercise,
-                   let setLogs = (selectedExercise.setLogs as? Set<SetLog>)?.sorted(by: {
-                       $0.workoutSession?.date ?? Date() < $1.workoutSession?.date ?? Date()
-                   }), !setLogs.isEmpty {
-                    
+                   case let points = dailyMaxWeights(for: selectedExercise), !points.isEmpty {
+
                     Text("Max Weight Lifted for \(selectedExercise.name ?? "")")
                         .font(.headline)
                         .padding(.bottom)
-                    // The main chart view that plots weight over time for the selected exercise.
-                    Chart(setLogs) { log in
+                    // Plots the heaviest set from each workout day for the selected exercise.
+                    Chart(points) { point in
                         LineMark(
-                            x: .value("Date", log.workoutSession?.date ?? Date()),
-                            y: .value("Weight", log.weight)
+                            x: .value("Date", point.date),
+                            y: .value("Weight", point.maxWeight)
                         )
                         .foregroundStyle(Color("AccentColor"))
-                
+
                         PointMark(
-                            x: .value("Date", log.workoutSession?.date ?? Date()),
-                            y: .value("Weight", log.weight)
+                            x: .value("Date", point.date),
+                            y: .value("Weight", point.maxWeight)
                         )
                         .foregroundStyle(Color("AccentColor"))
                         .annotation(position: .top) {
-                            Text("\(log.weight, specifier: "%.0f") lbs")
+                            Text("\(point.maxWeight.formatted()) lbs")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
                     }
+                    .chartXAxis {
+                        AxisMarks(preset: .aligned, values: points.map(\.date)) { _ in
+                            AxisGridLine()
+                            AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                        }
+                    }
+                    .chartYAxisLabel("lbs")
+                    .frame(maxHeight: 350)
                     .padding()
-                    
+                    Spacer()
+
                 } else {
                     // A placeholder view shown when no exercise is selected or there's no data.
                     Spacer()
@@ -71,6 +78,12 @@ struct ProgressChartView: View {
                 }
             }
             .navigationTitle("Progress")
+            .onChange(of: exercises.count) {
+                // Pick an exercise automatically once the first sets are logged.
+                if selectedExercise == nil {
+                    selectedExercise = exercises.first
+                }
+            }
             .onAppear {
                 // Automatically selects the first exercise in the list when the view initially appears.
                 if selectedExercise == nil {
@@ -79,6 +92,25 @@ struct ProgressChartView: View {
             }
         }
     }
+}
+
+// One chart point: the heaviest weight lifted for an exercise on a given day.
+private struct DailyMax: Identifiable {
+    let date: Date
+    let maxWeight: Double
+    var id: Date { date }
+}
+
+// Groups an exercise's sets from finished workouts by day and keeps the heaviest set from each day.
+private func dailyMaxWeights(for exercise: Exercise) -> [DailyMax] {
+    let setLogs = (exercise.setLogs as? Set<SetLog>) ?? []
+    let completedSets = setLogs.filter { $0.workoutSession?.isCompleted == true }
+    let byDay = Dictionary(grouping: completedSets) { log in
+        Calendar.current.startOfDay(for: log.workoutSession?.date ?? Date())
+    }
+    return byDay
+        .map { DailyMax(date: $0.key, maxWeight: $0.value.map(\.weight).max() ?? 0) }
+        .sorted { $0.date < $1.date }
 }
 
 #Preview {

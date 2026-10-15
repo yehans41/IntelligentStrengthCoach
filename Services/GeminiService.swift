@@ -34,7 +34,8 @@ final class GeminiService {
 
         Based on these details, generate a 4-day workout split for their first week.
         The response should be structured simply. For each day, provide the day's name (e.g., "Day 1: Upper Body Strength") and a list of 5-6 exercises with sets and reps (e.g., "Bench Press: 3 sets of 5 reps").
-        Do not include any other conversational text or introductions. Just provide the workout plan.
+        Use plain text only (no Markdown, headings, bold, or tables). Put each day name on its own line starting with "Day", and each exercise on its own line in the form "Exercise Name: sets and reps".
+        Do not include any other conversational text, introductions, or notes. Just provide the workout plan.
         """
         
         print("--- Sending Prompt to Gemini ---")
@@ -69,7 +70,7 @@ final class GeminiService {
                     performanceSummary += "- \(exerciseName):\n"
                     let sortedLogs = logs.sorted { $0.orderInExercise < $1.orderInExercise }
                     for log in sortedLogs {
-                        performanceSummary += "  - Set \(log.orderInExercise): \(log.weight) lbs for \(log.reps) reps\n"
+                        performanceSummary += "  - Set \(log.orderInExercise): \(log.weight.formatted()) lbs for \(log.reps) reps\n"
                     }
                 }
             }
@@ -89,7 +90,8 @@ final class GeminiService {
             The new plan should apply the principles of progressive overload. For example, slightly increase the weight or reps for exercises they completed successfully.
             
             The response should be structured simply. For each day, provide the day's name and a list of 5-6 exercises with sets and reps.
-            Do not include any other conversational text. Just provide the new workout plan.
+            Use plain text only (no Markdown, headings, bold, or tables). Put each day name on its own line starting with "Day" (e.g. "Day 1: Upper Body Strength"), and each exercise on its own line in the form "Exercise Name: sets and reps" (e.g. "Bench Press: 3 sets of 5 reps at 140 lbs").
+            Do not include any other conversational text or notes. Just provide the new workout plan.
             """
             
             print("--- Sending ADJUSTED Prompt to Gemini ---")

@@ -16,7 +16,7 @@ An advanced iOS fitness application built with SwiftUI that leverages the Gemini
 -   **UI Framework:** SwiftUI
 -   **Data Persistence:** Core Data
 -   **AI Integration:** Google Gemini (`gemini-3.8-flash`) via Firebase AI Logic (Gemini Developer API)
--   **Architecture:** Model-View-ViewModel (MVVM)
+-   **Architecture:** SwiftUI views backed by Core Data (`@FetchRequest`), with a separate service layer for AI calls (`GeminiService`) and response parsing (`WorkoutPlanParser`)
 -   **Concurrency:** Swift Concurrency (`async`/`await`, `Task`)
 -   **Data Visualization:** SwiftUI Charts
 -   **Version Control:** Git & GitHub
