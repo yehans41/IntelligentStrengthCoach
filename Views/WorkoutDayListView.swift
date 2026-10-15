@@ -23,11 +23,26 @@ struct WorkoutDayListView: View {
             ForEach(sortedDays) { day in
                 // Each row is a tappable link that navigates to the live workout view for that day.
                 NavigationLink(destination: LiveWorkoutView(dayTemplate: day)) {
-                    Text(day.dayName ?? "Unnamed Day")
+                    VStack(alignment: .leading) {
+                        Text(day.dayName ?? "Unnamed Day")
+                        Text("\(day.exercises?.count ?? 0) exercises")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
         }
+        .overlay {
+            if sortedDays.isEmpty {
+                ContentUnavailableView(
+                    "No Workout Days",
+                    systemImage: "calendar.badge.exclamationmark",
+                    description: Text("This plan doesn't contain any workouts. Try generating a new plan.")
+                )
+            }
+        }
         .navigationTitle(plan.name ?? "Workout Plan")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

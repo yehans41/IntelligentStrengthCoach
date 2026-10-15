@@ -31,6 +31,12 @@ struct OnboardingView: View {
     @State private var experienceLevel: ExperienceLevel = .beginner
     @State private var fitnessGoal: FitnessGoal = .muscleGain
     @State private var isGeneratingPlan = false
+    // Holds the message shown in an alert if saving or plan generation fails.
+    @State private var errorMessage: String?
+
+    // The existing profile (most recently updated), reused so each new plan doesn't create a duplicate user.
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \User.updatedAt, ascending: false)])
+    private var users: FetchedResults<User>
 
     private let geminiService = GeminiService()
     private let planParser = WorkoutPlanParser()
@@ -60,7 +66,8 @@ struct OnboardingView: View {
                         }
                     }
                 }
-                .navigationTitle("Create Profile")
+                .navigationTitle(users.isEmpty ? "Create Profile" : "Update Profile")
+                .onAppear(perform: loadExistingProfile)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Cancel") {
@@ -76,8 +83,8 @@ struct OnboardingView: View {
                                 await saveUserAndGeneratePlan()
                             }
                         }
-                        // Disable the save button while loading.
-                        .disabled(isGeneratingPlan)
+                        // Disable the save button while loading or if no name has been entered.
+                        .disabled(isGeneratingPlan || username.trimmingCharacters(in: .whitespaces).isEmpty)
                     }
                 }
             }
@@ -99,39 +106,56 @@ struct OnboardingView: View {
             }
         }
         .tint(Color("AccentColor"))
+        .alert("Couldn't Generate Plan", isPresented: Binding(
+            get: { errorMessage != nil },
+            set: { if !$0 { errorMessage = nil } }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(errorMessage ?? "")
+        }
+    }
+    // Pre-fills the form with the saved profile, if one exists.
+    private func loadExistingProfile() {
+        guard let user = users.first else { return }
+        username = user.name ?? ""
+        experienceLevel = ExperienceLevel(rawValue: user.experienceLevel ?? "") ?? .beginner
+        fitnessGoal = FitnessGoal(rawValue: user.primaryGoal ?? "") ?? .muscleGain
     }
     // Handles the entire end-to-end process of saving the user and generating their first workout plan.
     private func saveUserAndGeneratePlan() async {
-        // This function's logic remains the same
-        let newUser = User(context: viewContext)
-        
-        newUser.id = UUID()
-        newUser.name = username
-        newUser.experienceLevel = experienceLevel.rawValue
-        newUser.primaryGoal = fitnessGoal.rawValue
-        newUser.createdAt = Date()
-        newUser.updatedAt = Date()
-        
+        // Update the existing profile, or create one if this is the first launch.
+        let user = users.first ?? User(context: viewContext)
+        if user.id == nil {
+            user.id = UUID()
+            user.createdAt = Date()
+        }
+        user.name = username.trimmingCharacters(in: .whitespaces)
+        user.experienceLevel = experienceLevel.rawValue
+        user.primaryGoal = fitnessGoal.rawValue
+        user.updatedAt = Date()
+
         do {
             try viewContext.save()
             print("User saved successfully!")
-            
-            let workoutPlanText = try await geminiService.generateWorkoutPlan(for: newUser)
-            print("--- Received Response from Gemini ---")
-            
-            let planName = "AI Generated Plan (\(Date().formatted(date: .numeric, time: .omitted)))"
-            _ = try planParser.parse(planString: workoutPlanText, planName: planName, in: viewContext)
-            
+
+            let workoutPlanText = try await geminiService.generateWorkoutPlan(for: user)
+
+            let planName = "AI Plan – \(Date().formatted(.dateTime.month(.abbreviated).day().hour().minute()))"
+            let plan = try planParser.parse(planString: workoutPlanText, planName: planName, in: viewContext)
+            plan.user = user
+
             try viewContext.save()
             print("Successfully parsed and saved the workout plan!")
-            
+            isGeneratingPlan = false
+            dismiss()
         } catch {
-            let nsError = error as NSError
-            print("Error during save or plan generation: \(nsError), \(nsError.userInfo)")
+            // Discard any partially created plan and keep the sheet open so the user can retry.
+            viewContext.rollback()
+            print("Error during save or plan generation: \(error)")
+            isGeneratingPlan = false
+            errorMessage = error.localizedDescription
         }
-        
-        isGeneratingPlan = false
-        dismiss()
     }
 }
 
