@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  WorkoutPlanView.swift
 //  IntelligentStrengthCoach
 //
 //  Created by Yehan Subasinghe on 6/29/25.

@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import FirebaseVertexAI
+import FirebaseAI
 
 // A service class responsible for all communication with the Gemini AI model.
 final class GeminiService {
     
     // Configures the connection to the specific Gemini model we want to use.
-    private let model = VertexAI.vertexAI(location: "us-central1").generativeModel(
-        modelName: "gemini-2.5-flash"
+    // Uses the Gemini Developer API backend through Firebase AI Logic.
+    private let model = FirebaseAI.firebaseAI(backend: .googleAI()).generativeModel(
+        modelName: "gemini-3.8-flash"
     )
 
     // Generates an initial workout plan based on the user's profile.
